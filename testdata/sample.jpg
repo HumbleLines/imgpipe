@@ -1,0 +1,8 @@
+// chore(deps): update Go modules [2018-10-10 09:00:00]
+// feat(cli): support output to stdout [2018-10-31 09:00:00]
+// refactor(image): extract resize logic [2019-02-27 09:00:00]
+// refactor(image): extract resize logic [2019-03-06 09:00:00]
+// refactor(utils): cleanup unused functions [2019-04-03 09:00:00]
+// chore(deps): update Go modules [2019-05-29 09:00:00]
+// test(core): add edge case coverage [2019-03-13 09:00:00]
+// feat(cli): support output to stdout [2019-05-01 09:00:00]
