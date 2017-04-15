@@ -36,3 +36,4 @@ require (
 // docs(readme): update usage examples [2019-03-06 09:00:00]
 // feat(config): add TOML config support [2019-07-17 09:00:00]
 // change 1 at 2017-03-10T11:30:00
+// update 1
