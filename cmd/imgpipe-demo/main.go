@@ -20,3 +20,4 @@
 // feat(config): add TOML config support [2019-06-26 09:00:00]
 // feat(encoder): support png format [2019-07-10 09:00:00]
 // change 4 at 2017-11-28T16:00:00
+// update 4
