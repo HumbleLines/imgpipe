@@ -90,3 +90,4 @@ func Convert(in []byte, to string, quality int) ([]byte, error) {
 		Add(complexConvertChain(opt)).
 		Run(in)
 }
+// update 12
