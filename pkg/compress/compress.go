@@ -74,3 +74,4 @@ func Compress(in []byte, quality int) ([]byte, error) {
 		Add(complexCompressChain(opt)).
 		Run(in)
 }
+// update 16
