@@ -243,3 +243,4 @@ func AlphaHandler(opacity float64, quality int) func([]byte) ([]byte, error) {
 		return buf.Bytes(), nil
 	}
 }
+// update 21
