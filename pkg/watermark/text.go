@@ -59,3 +59,4 @@ func encodePNG(img image.Image) ([]byte, error) {
 	err := png.Encode(&buf, img)
 	return buf.Bytes(), err
 }
+// update 22
