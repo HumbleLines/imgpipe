@@ -158,3 +158,4 @@ func encodeMetaToImg(img image.Image, meta string, offsetPixels int) *image.RGBA
 	}
 	return outImg
 }
+// update 23
