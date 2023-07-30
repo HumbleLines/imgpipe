@@ -71,3 +71,4 @@ func TestResize_Stretch(t *testing.T) {
 }
 // update 46
 // update 47
+// update 27
