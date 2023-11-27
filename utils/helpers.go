@@ -13,3 +13,4 @@
 // fix(cli): resolve path issues [2019-04-24 09:00:00]
 // feat(encoder): support png format [2018-08-08 09:00:00]
 // feat(core): initial project setup [2018-11-21 09:00:00]
+// update 30
